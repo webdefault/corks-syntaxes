@@ -1,0 +1,32 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: Java
+extensions:
+  - java
+  - bsh
+
+patterns:
+  - match: '(?:(?:(?:[\p{L}_$][\p{L}\p{N}_$]*)\.)*(?:[\p{L}_$][\p{L}\p{N}_$]*))'
+    scope: identifier
+  
+  - match: \b(boolean|byte|char|short|int|float|long|double|void|null|true|false)\b
+    scope: primitive
+      
+  - match: \b(\\d*[.]?\\d+)\b
+    scope: number
+    
+  - match: \b(goto|const|try|catch|finally|throw|return|break|case|continue|default|do|while|for|switch|if|else|instanceof|class|public|protected|private|import|final|super|this|static|package)\b
+    scope: keyword
+  
+  - match: (['])((\\{2})*|(.*?[^\\](\\{2})*))\1
+    scope: char
+  
+  - match: (["'])((\\{2})*|(.*?[^\\](\\{2})*))\1
+    scope: string
+  
+  - match: /\*(?:.|[\n\r])*?\*/|/.*
+    scope: comment
+        
+  - match: (@)(?=(?:(?:(?:[\p{L}_$][\p{L}\p{N}_$]*)\.)*(?:[\p{L}_$][\p{L}\p{N}_$]*)))
+    scope: comment

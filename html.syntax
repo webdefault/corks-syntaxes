@@ -1,0 +1,35 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: HTML
+firstLine: (?i)<(!DOCTYPE\s*)?html
+extensions:
+  - html
+  - htm
+  - shtml
+  - xhtml
+  - inc
+  - tmpl
+  - tpl
+
+patterns:
+  - match: <([A-Za-z][A-Za-z0-9]*)\b[^>]*>|<\/([A-Za-z][A-Za-z0-9]*)\b[^>]*>
+    scope: identifier
+  
+  - match: (\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?
+    scope: primitive
+      
+  - match: (.+?):(.+?);
+    scope: number
+    
+  - match: :[ \t](.+?);
+    scope: keyword
+    
+  - match: (?s)<!--.*?-->
+    scope: comment
+    
+  - match: (['])((\\{2})*|(.*?[^\\](\\{2})*))\1
+    scope: char
+  
+  - match: (["'])((\\{2})*|(.*?[^\\](\\{2})*))\1
+    scope: string
